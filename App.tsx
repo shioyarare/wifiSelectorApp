@@ -19,6 +19,8 @@ import {
   View,
 } from 'react-native';
 
+import {NativeModules} from 'react-native';
+
 import {
   Colors,
   DebugInstructions,
@@ -60,6 +62,12 @@ const Section: React.FC<
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const {CustomNativeModuleKotlin} = NativeModules;
+
+  CustomNativeModuleKotlin.getOSInfo((name: String, os: String) => {
+    console.log(name, os);
+  })
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -78,7 +86,7 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
+          <Section title="aaa">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
